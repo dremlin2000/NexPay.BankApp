@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NexPay.BankApp.Core\NexPay.BankApp.Core.csproj" />
+    <ProjectReference Include="..\NexPay.BankApp.Repository\NexPay.BankApp.Repository.csproj" />
+  </ItemGroup>
+
+</Project>

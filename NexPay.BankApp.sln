@@ -1,0 +1,67 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2020
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NexPay.BankApp.Web", "NexPay.BankApp.Web\NexPay.BankApp.Web.csproj", "{7DD0C9D1-92DD-4DB5-B057-0A21541C16BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NexPay.BankApp.AppService", "NexPay.BankApp.AppService\NexPay.BankApp.AppService.csproj", "{9A0B727A-A156-4B6F-9D93-1C359A302FC0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NexPay.BankApp.Core", "NexPay.BankApp.Core\NexPay.BankApp.Core.csproj", "{A5DD7BC2-9CDC-4220-A709-5F9C0FC40DDA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NexPay.BankApp.Repository", "NexPay.BankApp.Repository\NexPay.BankApp.Repository.csproj", "{288E08BE-8380-4035-B1B8-E9236A48EB51}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NexPay.BankApp.AppService.Test", "NexPay.BankApp.AppService.Test\NexPay.BankApp.AppService.Test.csproj", "{3544717E-ED98-4BE6-8725-947EC3E78812}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NexPay.BankApp.Core.Test", "NexPay.BankApp.Core.Test\NexPay.BankApp.Core.Test.csproj", "{ACE0D791-898C-4396-B947-F951E5FCFEB3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NexPay.BankApp.Web.Test", "NexPay.BankApp.Web.Test\NexPay.BankApp.Web.Test.csproj", "{38B090A6-8561-45D8-87A2-CF601A0ABE99}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NexPay.Utils", "NexPay.Utils\NexPay.Utils.csproj", "{1DF05302-C3F8-420C-AF35-FA1E5EDAEF59}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7DD0C9D1-92DD-4DB5-B057-0A21541C16BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DD0C9D1-92DD-4DB5-B057-0A21541C16BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DD0C9D1-92DD-4DB5-B057-0A21541C16BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DD0C9D1-92DD-4DB5-B057-0A21541C16BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A0B727A-A156-4B6F-9D93-1C359A302FC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A0B727A-A156-4B6F-9D93-1C359A302FC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A0B727A-A156-4B6F-9D93-1C359A302FC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A0B727A-A156-4B6F-9D93-1C359A302FC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5DD7BC2-9CDC-4220-A709-5F9C0FC40DDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5DD7BC2-9CDC-4220-A709-5F9C0FC40DDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5DD7BC2-9CDC-4220-A709-5F9C0FC40DDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5DD7BC2-9CDC-4220-A709-5F9C0FC40DDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{288E08BE-8380-4035-B1B8-E9236A48EB51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{288E08BE-8380-4035-B1B8-E9236A48EB51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{288E08BE-8380-4035-B1B8-E9236A48EB51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{288E08BE-8380-4035-B1B8-E9236A48EB51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3544717E-ED98-4BE6-8725-947EC3E78812}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3544717E-ED98-4BE6-8725-947EC3E78812}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3544717E-ED98-4BE6-8725-947EC3E78812}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3544717E-ED98-4BE6-8725-947EC3E78812}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACE0D791-898C-4396-B947-F951E5FCFEB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACE0D791-898C-4396-B947-F951E5FCFEB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACE0D791-898C-4396-B947-F951E5FCFEB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACE0D791-898C-4396-B947-F951E5FCFEB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38B090A6-8561-45D8-87A2-CF601A0ABE99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38B090A6-8561-45D8-87A2-CF601A0ABE99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38B090A6-8561-45D8-87A2-CF601A0ABE99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38B090A6-8561-45D8-87A2-CF601A0ABE99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DF05302-C3F8-420C-AF35-FA1E5EDAEF59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DF05302-C3F8-420C-AF35-FA1E5EDAEF59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DF05302-C3F8-420C-AF35-FA1E5EDAEF59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DF05302-C3F8-420C-AF35-FA1E5EDAEF59}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F34CF9D0-14A0-41CB-BB22-79F8CF4F6764}
+	EndGlobalSection
+EndGlobal

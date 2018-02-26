@@ -1,10 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using NexPay.BankApp.Core.ViewModel;
+using System;
+using System.Threading.Tasks;
 
 namespace NexPay.BankApp.Core.Abstract.Repository
 {
-    interface IPaymentRepository
+    public interface IPaymentRepository
     {
+        Task<Guid> Add(PaymentDetails paymentDetails);
     }
 }

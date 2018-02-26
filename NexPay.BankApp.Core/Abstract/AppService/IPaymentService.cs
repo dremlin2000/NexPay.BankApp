@@ -1,10 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using NexPay.BankApp.Core.ViewModel;
+using System;
+using System.Threading.Tasks;
 
 namespace NexPay.BankApp.Core.Abstract.AppService
 {
-    interface IPaymentService
+    public interface IPaymentService
     {
+        Task<Guid> Submit(PaymentDetails paymentDetails);
     }
 }

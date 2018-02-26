@@ -1,10 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace NexPay.BankApp.Core.ViewModel
 {
-    class PaymentDetails
+    public class PaymentDetails
     {
+        public uint Bsb { get; set; }
+        public uint AccountNumber { get; set; }
+        public string AccountName { get; set; }
+        public string Reference { get; set; }
+        public decimal Amount { get; set; }
     }
 }

@@ -24,6 +24,11 @@
     <Folder Include="ClientApp\app\components\payment\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\NexPay.BankApp.AppService\NexPay.BankApp.AppService.csproj" />
+    <ProjectReference Include="..\NexPay.BankApp.Core\NexPay.BankApp.Core.csproj" />
+  </ItemGroup>
+
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">
     <!-- Ensure Node.js is installed -->
     <Exec Command="node --version" ContinueOnError="true">

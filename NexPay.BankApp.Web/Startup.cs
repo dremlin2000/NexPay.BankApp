@@ -13,6 +13,14 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using NexPay.BankApp.AppService;
+using NexPay.BankApp.Core.Abstract.AppService;
+using NexPay.BankApp.Core.Abstract.Repository;
+using NexPay.BankApp.Core.Configuration;
+using NexPay.BankApp.Core.ViewModel;
+using NexPay.BankApp.Repository;
+using NexPay.Utils.Abstract;
+using NexPay.Utils.Concrete;
 
 namespace NexPay.BankApp
 {
@@ -29,6 +37,15 @@ namespace NexPay.BankApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().AddJsonOptions(options => options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver());
+
+            // Add application services.
+            services.AddScoped<IJsonSerializer, NewtonsoftJsonSerializer>();
+            services.AddScoped<IPaymentRepository, PaymentLocalStorageRepository>();
+            services.AddScoped<IModelValidator, ModelValidator>();
+            services.AddScoped<IPaymentService, PaymentService>();
+
+            var appSettings = Configuration.GetSection("AppSettings");
+            services.Configure<AppSettings>(appSettings);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,6 +61,34 @@ namespace NexPay.BankApp
 
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
+
+            app.UseExceptionHandler(
+                 options => {
+                     options.Run(
+                     async context =>
+                     {
+                         context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                         context.Response.ContentType = "application/json";
+                         var ex = context.Features.Get<IExceptionHandlerFeature>();
+                         if (ex != null)
+                         {
+                             var errMessage = new ErrorMessage();
+                             if (env.IsDevelopment())
+                             {
+                                 errMessage.Message = $"Error Message: { ex.Error.Message}\r\nStackTrace: {ex.Error.StackTrace}";
+                                 errMessage.ErrorCode = ex.Error.GetType().Name;
+                             }
+                             else
+                             {
+                                 errMessage.Message = "Internal server error occurred!";
+                             }
+
+                             await context.Response.WriteAsync(JsonConvert.SerializeObject(
+                                 new Error { Errors = new[] { errMessage } },
+                                 new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() })).ConfigureAwait(false);
+                         }
+                     });
+                 });
 
             app.UseStaticFiles();
 

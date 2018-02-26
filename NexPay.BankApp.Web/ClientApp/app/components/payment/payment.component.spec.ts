@@ -44,7 +44,7 @@ describe('Payment component', () => {
         component.submit();
 
         expect(component.triedToSubmitForm).toBeTruthy();
-        expect(component.form.valid).toBeTruthy();
+        expect(component.form.valid).toBeFalsy();
     }));
 
     it('When submit the valid form Then form is valid and payment service submit function is called', async(() => {

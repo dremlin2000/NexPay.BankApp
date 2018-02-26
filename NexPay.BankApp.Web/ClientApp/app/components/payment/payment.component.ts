@@ -3,6 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { UtilityService } from '../../services/utility.service';
 import { PaymentService } from '../../services/payment.service';
 import { PaymentDetails } from '../../viewmodels/paymentdetails';
+import { PaymentDetailsValidator } from '../../validators/paymentdetails.validator';
 
 @Component({
     selector: 'payment',
@@ -19,13 +20,14 @@ export class PaymentComponent {
 
     constructor(private utilityService: UtilityService, private paymentService: PaymentService) {
         this.form = <FormGroup>this.utilityService.generateReactiveForm(new FormGroup({}), new PaymentDetails());
+        PaymentDetailsValidator.apply(this.form);
     }
 
     public submit() {
         this.triedToSubmitForm = true;
-        //if (!this.form.valid) {
-        //    return;
-        //}
+        if (!this.form.valid) {
+            return;
+        }
 
         this.paymentService.submit(<PaymentDetails>this.form.value)
             .subscribe(

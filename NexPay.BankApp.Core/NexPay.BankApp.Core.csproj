@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <Folder Include="Extensions\" />
-    <Folder Include="Validator\" />
   </ItemGroup>
 
   <ItemGroup>

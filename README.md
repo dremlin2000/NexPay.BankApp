@@ -13,3 +13,7 @@ Client and server side validations added along with logging feature.
 Unit tests for front and back end code are also implemented
 
 ** in order to run jasmine front end code unit tests please run "npm test"
+
+### Configuration settings
+The web application writes the bank transactions into the default c:\NexPay.TransactionFile.txt file. If you want to change it, please do that by editing appsettings.json.
+The log files are written into the default C:\Temp folder. If you want to change it, please do that by editing nlog.config file.

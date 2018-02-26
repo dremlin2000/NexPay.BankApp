@@ -26,7 +26,8 @@ namespace NexPay.BankApp.Test
             var expectedReceiptNum = Guid.NewGuid();
             var mockPaymentService = new Mock<IPaymentService>();
             mockPaymentService.Setup(x => x.Submit(It.IsAny<PaymentDetails>())).ReturnsAsync(expectedReceiptNum);
-            var controller = new PaymentController(mockPaymentService.Object);
+            var mockLogger = new Mock<ILogger<PaymentController>>();
+            var controller = new PaymentController(mockPaymentService.Object, mockLogger.Object);
 
             //Act
             var result = await controller.Post(new PaymentDetails());
@@ -45,7 +46,8 @@ namespace NexPay.BankApp.Test
             mockPaymentService
                 .Setup(x => x.Submit(It.IsAny<PaymentDetails>()))
                 .ThrowsAsync(new ValidationException(new List<ValidationFailure> { new ValidationFailure("propName", "error") }));
-            var controller = new PaymentController(mockPaymentService.Object);
+            var mockLogger = new Mock<ILogger<PaymentController>>();
+            var controller = new PaymentController(mockPaymentService.Object, mockLogger.Object);
             //Act
             var result = await controller.Post(new PaymentDetails());
 

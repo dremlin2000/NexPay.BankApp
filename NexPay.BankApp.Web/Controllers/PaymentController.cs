@@ -13,18 +13,22 @@ namespace NexPay.BankApp.Web.Controllers
     public class PaymentController : BaseController
     {
         private readonly IPaymentService _paymentService;
+        private readonly ILogger<PaymentController> _logger;
 
-        public PaymentController(IPaymentService paymentService)
+        public PaymentController(IPaymentService paymentService, ILogger<PaymentController> logger)
         {
             _paymentService = paymentService;
+            _logger = logger;
         }
 
         [HttpPost()]
         public async Task<IActionResult> Post([FromBody]PaymentDetails paymentDetails)
         {
-            return await ExecuteAsync(async () => 
+            _logger.LogInformation("Begin payment processing");
+            return await ExecuteAsync(async () =>
             {
                 var result = await _paymentService.Submit(paymentDetails);
+                _logger.LogInformation($"Payment {result} processed successfuly");
                 return result;
             });
         }

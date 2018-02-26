@@ -8,7 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="7.4.0" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" />
+    <PackageReference Include="NLog.Web.AspNetCore" Version="4.5.0-rc3" />
+    <PackageReference Include="NLog" Version="4.5.0-rc06" />
   </ItemGroup>
 
   <ItemGroup>
@@ -21,12 +24,22 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\app\enums\severity.ts" />
+    <None Remove="ClientApp\app\services\logger.service.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="ClientApp\app\components\payment\" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\NexPay.BankApp.AppService\NexPay.BankApp.AppService.csproj" />
     <ProjectReference Include="..\NexPay.BankApp.Core\NexPay.BankApp.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\app\enums\severity.ts" />
+    <TypeScriptCompile Include="ClientApp\app\services\logger.service.ts" />
   </ItemGroup>
 
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">

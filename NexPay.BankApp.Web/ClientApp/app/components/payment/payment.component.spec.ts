@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 
 import { PaymentComponent } from './payment.component';
 import { PaymentService } from '../../services/payment.service';
+import { LoggerService } from '../../services/logger.service';
 import { PaymentDetails } from '../../viewmodels/paymentdetails';
 import { UtilityService } from '../../services/utility.service';
 
@@ -21,26 +22,28 @@ describe('Payment component', () => {
         TestBed.configureTestingModule({
             imports: [HttpModule, ReactiveFormsModule],
             declarations: [PaymentComponent],
-            providers: [PaymentService, UtilityService, { provide: 'BASE_URL', useFactory: () => "TestBaseUrl" }]
+            providers: [PaymentService, LoggerService, UtilityService, { provide: 'BASE_URL', useFactory: () => "TestBaseUrl" }]
         });
         fixture = TestBed.createComponent(PaymentComponent);
         component = fixture.componentInstance;
         paymentService = fixture.debugElement.injector.get(PaymentService);
+        let loggerService = fixture.debugElement.injector.get(LoggerService);
         let utilityService = fixture.debugElement.injector.get(UtilityService);
 
         // Setup spy on the methods
         receiptNum = utilityService.newGuid();
+        spyOn(loggerService, 'Log');
     });
 
     it('When the component is initialized and ready to use Then the form should be valid', async(() => {
         expect(component.form.valid).toBeTruthy();
     }));
-    
+
     it('When I submit the empty form Then form is invalid', async(() => {
         spyOn(paymentService, 'submit').and.returnValue(Observable.of(receiptNum));
         let vm = new PaymentDetails()
         component.form.setValue(vm);
-        
+
         component.submit();
 
         expect(component.triedToSubmitForm).toBeTruthy();

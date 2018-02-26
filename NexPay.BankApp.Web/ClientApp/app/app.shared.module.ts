@@ -10,6 +10,7 @@ import { PaymentComponent } from './components/payment/payment.component';
 
 import { UtilityService } from './services/utility.service';
 import { PaymentService } from './services/payment.service';
+import { LoggerService } from './services/logger.service';
 
 @NgModule({
     declarations: [
@@ -30,7 +31,8 @@ import { PaymentService } from './services/payment.service';
     ],
     providers: [
         UtilityService,
-        PaymentService
+        PaymentService,
+        LoggerService
     ]
 })
 export class AppModuleShared {

@@ -8,6 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="6.2.2" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="3.2.0" />
     <PackageReference Include="FluentValidation" Version="7.4.0" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" />
     <PackageReference Include="NLog.Web.AspNetCore" Version="4.5.0-rc3" />
@@ -35,6 +37,7 @@
   <ItemGroup>
     <ProjectReference Include="..\NexPay.BankApp.AppService\NexPay.BankApp.AppService.csproj" />
     <ProjectReference Include="..\NexPay.BankApp.Core\NexPay.BankApp.Core.csproj" />
+    <ProjectReference Include="..\NexPay.BankApp.Repository\NexPay.BankApp.Repository.csproj" />
   </ItemGroup>
 
   <ItemGroup>

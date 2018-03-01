@@ -1,23 +1,29 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2020
+VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NexPay.BankApp.Web", "NexPay.BankApp.Web\NexPay.BankApp.Web.csproj", "{7DD0C9D1-92DD-4DB5-B057-0A21541C16BE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NexPay.BankApp.Web", "NexPay.BankApp.Web\NexPay.BankApp.Web.csproj", "{7DD0C9D1-92DD-4DB5-B057-0A21541C16BE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NexPay.BankApp.AppService", "NexPay.BankApp.AppService\NexPay.BankApp.AppService.csproj", "{9A0B727A-A156-4B6F-9D93-1C359A302FC0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NexPay.BankApp.AppService", "NexPay.BankApp.AppService\NexPay.BankApp.AppService.csproj", "{9A0B727A-A156-4B6F-9D93-1C359A302FC0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NexPay.BankApp.Core", "NexPay.BankApp.Core\NexPay.BankApp.Core.csproj", "{A5DD7BC2-9CDC-4220-A709-5F9C0FC40DDA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NexPay.BankApp.Core", "NexPay.BankApp.Core\NexPay.BankApp.Core.csproj", "{A5DD7BC2-9CDC-4220-A709-5F9C0FC40DDA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NexPay.BankApp.Repository", "NexPay.BankApp.Repository\NexPay.BankApp.Repository.csproj", "{288E08BE-8380-4035-B1B8-E9236A48EB51}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NexPay.BankApp.Repository", "NexPay.BankApp.Repository\NexPay.BankApp.Repository.csproj", "{288E08BE-8380-4035-B1B8-E9236A48EB51}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NexPay.BankApp.AppService.Test", "NexPay.BankApp.AppService.Test\NexPay.BankApp.AppService.Test.csproj", "{3544717E-ED98-4BE6-8725-947EC3E78812}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NexPay.BankApp.AppService.Test", "NexPay.BankApp.AppService.Test\NexPay.BankApp.AppService.Test.csproj", "{3544717E-ED98-4BE6-8725-947EC3E78812}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NexPay.BankApp.Core.Test", "NexPay.BankApp.Core.Test\NexPay.BankApp.Core.Test.csproj", "{ACE0D791-898C-4396-B947-F951E5FCFEB3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NexPay.BankApp.Core.Test", "NexPay.BankApp.Core.Test\NexPay.BankApp.Core.Test.csproj", "{ACE0D791-898C-4396-B947-F951E5FCFEB3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NexPay.BankApp.Web.Test", "NexPay.BankApp.Web.Test\NexPay.BankApp.Web.Test.csproj", "{38B090A6-8561-45D8-87A2-CF601A0ABE99}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NexPay.BankApp.Web.Test", "NexPay.BankApp.Web.Test\NexPay.BankApp.Web.Test.csproj", "{38B090A6-8561-45D8-87A2-CF601A0ABE99}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NexPay.Utils", "NexPay.Utils\NexPay.Utils.csproj", "{1DF05302-C3F8-420C-AF35-FA1E5EDAEF59}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NexPay.Utils", "NexPay.Utils\NexPay.Utils.csproj", "{1DF05302-C3F8-420C-AF35-FA1E5EDAEF59}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{B511E689-C1F5-47C4-B22E-4A9D505A0592}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.EFRepository.Base", "Data.EFRepository.Base\Data.EFRepository.Base.csproj", "{05BD29DC-4B92-40A9-AAA4-8520B6F87F00}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.Repository.Base", "Data.Repository.Base\Data.Repository.Base.csproj", "{BE3506F3-84D5-43EC-B544-D5D96CD28FCF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,9 +63,21 @@ Global
 		{1DF05302-C3F8-420C-AF35-FA1E5EDAEF59}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1DF05302-C3F8-420C-AF35-FA1E5EDAEF59}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1DF05302-C3F8-420C-AF35-FA1E5EDAEF59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05BD29DC-4B92-40A9-AAA4-8520B6F87F00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05BD29DC-4B92-40A9-AAA4-8520B6F87F00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05BD29DC-4B92-40A9-AAA4-8520B6F87F00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05BD29DC-4B92-40A9-AAA4-8520B6F87F00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE3506F3-84D5-43EC-B544-D5D96CD28FCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE3506F3-84D5-43EC-B544-D5D96CD28FCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE3506F3-84D5-43EC-B544-D5D96CD28FCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE3506F3-84D5-43EC-B544-D5D96CD28FCF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{05BD29DC-4B92-40A9-AAA4-8520B6F87F00} = {B511E689-C1F5-47C4-B22E-4A9D505A0592}
+		{BE3506F3-84D5-43EC-B544-D5D96CD28FCF} = {B511E689-C1F5-47C4-B22E-4A9D505A0592}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F34CF9D0-14A0-41CB-BB22-79F8CF4F6764}

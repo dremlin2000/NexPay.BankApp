@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.SpaServices.Webpack;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -16,6 +18,7 @@ using Newtonsoft.Json.Serialization;
 using NexPay.BankApp.AppService;
 using NexPay.BankApp.Core.Abstract.AppService;
 using NexPay.BankApp.Core.Abstract.Repository;
+using NexPay.BankApp.Core.Automapper.Profiles;
 using NexPay.BankApp.Core.Configuration;
 using NexPay.BankApp.Core.ViewModel;
 using NexPay.BankApp.Repository;
@@ -38,14 +41,19 @@ namespace NexPay.BankApp
         {
             services.AddMvc().AddJsonOptions(options => options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver());
 
+            services.AddAutoMapper();
+
             // Add application services.
             services.AddScoped<IJsonSerializer, NewtonsoftJsonSerializer>();
-            services.AddScoped<IPaymentRepository, PaymentLocalStorageRepository>();
+            services.AddScoped<Utils.Abstract.IObjectMapper, ObjectMapper>();
+            services.AddScoped<IAppRepository, AppEfRepository>();
             services.AddScoped<IModelValidator, ModelValidator>();
             services.AddScoped<IPaymentService, PaymentService>();
 
             var appSettings = Configuration.GetSection("AppSettings");
             services.Configure<AppSettings>(appSettings);
+
+            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DbConnection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

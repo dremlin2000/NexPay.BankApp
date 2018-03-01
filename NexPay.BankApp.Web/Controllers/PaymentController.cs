@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using NexPay.BankApp.Core.Abstract.AppService;
 using NexPay.BankApp.Core.ViewModel;
-using System;
+using NexPay.BankApp.Web.Infrastructure.ActionFilters;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -10,6 +10,8 @@ namespace NexPay.BankApp.Web.Controllers
 {
     [Produces("application/json")]
     [Route("api/[controller]")]
+    [ServiceFilter(typeof(UnitOfWorkActionFilter))]
+
     public class PaymentController : BaseController
     {
         private readonly IPaymentService _paymentService;
@@ -28,7 +30,7 @@ namespace NexPay.BankApp.Web.Controllers
             return await ExecuteAsync(async () =>
             {
                 var result = await _paymentService.Submit(paymentDetails);
-                _logger.LogInformation($"Payment {result} processed successfuly");
+                _logger.LogInformation($"Payment {result} processed successfully");
                 return result;
             });
         }

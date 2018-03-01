@@ -4,6 +4,8 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using AutoMapper;
+using Data.EFRepository.Base;
+using Data.Repository.Base.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
@@ -22,6 +24,7 @@ using NexPay.BankApp.Core.Automapper.Profiles;
 using NexPay.BankApp.Core.Configuration;
 using NexPay.BankApp.Core.ViewModel;
 using NexPay.BankApp.Repository;
+using NexPay.BankApp.Web.Infrastructure.ActionFilters;
 using NexPay.Utils.Abstract;
 using NexPay.Utils.Concrete;
 
@@ -47,13 +50,16 @@ namespace NexPay.BankApp
             services.AddScoped<IJsonSerializer, NewtonsoftJsonSerializer>();
             services.AddScoped<Utils.Abstract.IObjectMapper, ObjectMapper>();
             services.AddScoped<IAppRepository, AppEfRepository>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IModelValidator, ModelValidator>();
             services.AddScoped<IPaymentService, PaymentService>();
+            services.AddScoped<UnitOfWorkActionFilter>();
 
             var appSettings = Configuration.GetSection("AppSettings");
             services.Configure<AppSettings>(appSettings);
 
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DbConnection")));
+            services.AddScoped(provider => (DbContext)provider.GetService(typeof(AppDbContext)));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

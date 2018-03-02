@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using NexPay.BankApp.Core.Model;
 using System;
 using System.Linq;
 using System.Reflection;
@@ -9,6 +10,7 @@ namespace NexPay.BankApp.Repository
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
+            Database.EnsureCreated();
             //Database.SetInitializer<IspDbContext>(null);
             //Configuration.LazyLoadingEnabled = false;
             //Configuration.ProxyCreationEnabled = false;

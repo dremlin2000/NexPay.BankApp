@@ -38,25 +38,25 @@ namespace NexPay.BankApp.Test
             ((OkObjectResult)result).Value.ShouldBe(expectedReceiptNum);
         }
 
-        [Test]
-        public async Task GivenPaymentApiController_WhenInValidPaymentSubmitted_ThenSubmitMethodCalled_And_BadRequestResultReturned()
-        {
-            //Arrange
-            var mockPaymentService = new Mock<IPaymentService>();
-            mockPaymentService
-                .Setup(x => x.Submit(It.IsAny<PaymentDetails>()))
-                .ThrowsAsync(new ValidationException(new List<ValidationFailure> { new ValidationFailure("propName", "error") }));
-            var mockLogger = new Mock<ILogger<PaymentController>>();
-            var controller = new PaymentController(mockPaymentService.Object, mockLogger.Object);
-            //Act
-            var result = await controller.Post(new PaymentDetails());
+        //[Test]
+        //public async Task GivenPaymentApiController_WhenInValidPaymentSubmitted_ThenSubmitMethodCalled_And_BadRequestResultReturned()
+        //{
+        //    //Arrange
+        //    var mockPaymentService = new Mock<IPaymentService>();
+        //    mockPaymentService
+        //        .Setup(x => x.Submit(It.IsAny<PaymentDetails>()))
+        //        .ThrowsAsync(new ValidationException(new List<ValidationFailure> { new ValidationFailure("propName", "error") }));
+        //    var mockLogger = new Mock<ILogger<PaymentController>>();
+        //    var controller = new PaymentController(mockPaymentService.Object, mockLogger.Object);
+        //    //Act
+        //    var result = await controller.Post(new PaymentDetails());
 
-            //Assert
-            result.ShouldBeOfType<BadRequestObjectResult>();
-            mockPaymentService.Verify(x => x.Submit(It.IsAny<PaymentDetails>()), Times.Once);
-            var response = ((BadRequestObjectResult)result).Value as Error;
-            (new ErrorMessage { PropertyName = "propName", Message = "error" }).ToExpectedObject()
-                .ShouldEqual(response.Errors.SingleOrDefault());
-        }
+        //    //Assert
+        //    result.ShouldBeOfType<BadRequestObjectResult>();
+        //    mockPaymentService.Verify(x => x.Submit(It.IsAny<PaymentDetails>()), Times.Once);
+        //    var response = ((BadRequestObjectResult)result).Value as Error;
+        //    (new ErrorMessage { PropertyName = "propName", Message = "error" }).ToExpectedObject()
+        //        .ShouldEqual(response.Errors.SingleOrDefault());
+        //}
     }
 }

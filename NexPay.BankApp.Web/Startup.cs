@@ -11,7 +11,9 @@ using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.SpaServices.Webpack;
+using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -20,7 +22,6 @@ using Newtonsoft.Json.Serialization;
 using NexPay.BankApp.AppService;
 using NexPay.BankApp.Core.Abstract.AppService;
 using NexPay.BankApp.Core.Abstract.Repository;
-using NexPay.BankApp.Core.Automapper.Profiles;
 using NexPay.BankApp.Core.Configuration;
 using NexPay.BankApp.Core.ViewModel;
 using NexPay.BankApp.Repository;
@@ -32,12 +33,14 @@ namespace NexPay.BankApp
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IHostingEnvironment currentEnvironment)
         {
             Configuration = configuration;
+            CurrentEnvironment = currentEnvironment;
         }
 
         public IConfiguration Configuration { get; }
+        public IHostingEnvironment CurrentEnvironment { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -58,7 +61,28 @@ namespace NexPay.BankApp
             var appSettings = Configuration.GetSection("AppSettings");
             services.Configure<AppSettings>(appSettings);
 
-            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DbConnection")));
+            Action<DbContextOptionsBuilder> dbCtxOptions = null;
+            if (CurrentEnvironment.IsEnvironment("Testing"))
+            {
+                dbCtxOptions = (options) =>
+                {
+                    //There are two options to use in-memory database
+                    //First option is to use build in one but it does not support transactions
+                    options.UseInMemoryDatabase("TestingDB");
+                    options.ConfigureWarnings(x => x.Ignore(InMemoryEventId.TransactionIgnoredWarning));
+
+                    //Second option is to use SQLite in-memory
+                    //var inMemorySqlite = new SqliteConnection("Data Source=:memory:");
+                    //inMemorySqlite.Open();
+                    //options.UseSqlite(inMemorySqlite);
+                };
+            }
+            else
+            {
+                dbCtxOptions = (options) => options.UseSqlServer(Configuration.GetConnectionString("DbConnection"));
+            }
+
+            services.AddDbContext<AppDbContext>(dbCtxOptions);
             services.AddScoped(provider => (DbContext)provider.GetService(typeof(AppDbContext)));
         }
 

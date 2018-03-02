@@ -12,7 +12,7 @@ namespace NexPay.BankApp.Repository.EntityTypeConfiguration
         {
             base.Configure(builder);
 
-            builder.ToTable(nameof(PaymentDetails), "dbo");
+            builder.ToTable(nameof(PaymentDetails));
         }
     }
 }

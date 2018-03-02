@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.EFRepository.Base", "D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.Repository.Base", "Data.Repository.Base\Data.Repository.Base.csproj", "{BE3506F3-84D5-43EC-B544-D5D96CD28FCF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NexPay.BankApp.Web.IntegrationTest", "NexPay.BankApp.Web.IntegrationTest\NexPay.BankApp.Web.IntegrationTest.csproj", "{A2696DD9-48E2-4051-A207-07109DEE0450}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -71,6 +73,10 @@ Global
 		{BE3506F3-84D5-43EC-B544-D5D96CD28FCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE3506F3-84D5-43EC-B544-D5D96CD28FCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE3506F3-84D5-43EC-B544-D5D96CD28FCF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2696DD9-48E2-4051-A207-07109DEE0450}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2696DD9-48E2-4051-A207-07109DEE0450}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2696DD9-48E2-4051-A207-07109DEE0450}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2696DD9-48E2-4051-A207-07109DEE0450}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

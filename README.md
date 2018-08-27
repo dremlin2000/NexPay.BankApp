@@ -4,7 +4,7 @@
 * Visual Studio Visual Studio 2017 Community
 * The latest Node.JS web server
 
-** nuget and npm packages will be recovered during the first solution build.
+** nuget and npm packages will be recovered during the first solution build. If node_modules have not been recovered, please run "npm install" command in the web application directory
 
 ### Description
 The application developed by using Asp .Net Core 2 and Angular 5 in Visual Studio 2017 Community version 15.5.7.
